@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Video</title>
+    <style>
+        body {
+            color: white;
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Üst başlık kutusu stili */
+        header.feature-box.top {
+            background-color: black;
+            height: 100px;
+            margin: 0px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* İkinci başlık kutusu stili */
+        header.feature-box.second {
+            background-color: lightblue;
+            height: 50px;
+            text-align: center;
+            margin-top: -25px;
+        }
+
+        /* Özellikler kutusu stili */
+        .features {
+            background-color: black;
+            width: 1000px;
+            height: 400px;
+            border-radius: 35px;
+            object-fit: contain;
+            margin: 20px auto;
+        }
+
+        /* Çıktı alanı stili */
+        section.col-sm {
+            background-color: black;
+            width: 800px;
+            height: 730px;
+            border-radius: 35px;
+            object-fit: contain;
+            margin: 40px auto;
+        }
+
+        /* Resim stili */
+        img {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+            border-radius: 35px;
+            object-fit: contain;
+            margin: 40px auto;
+            display: block;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* Butonu sağa hizalama */
+            margin: 20px;
+            padding: 20px;
+            background-color: skyblue;
+            border-radius: 15px;
+            margin-top: 15px;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .form-container button {
+            padding: 5px 10px; /* Buton boyutunu küçültme */
+            background-color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: lightgray;
+        }
+
+        .form-container .custom-file-input {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Üst başlık -->
+    <header class="feature-box top">
+        <h1><strong>YOLOv8 ile Kişisel Koruyucu Ekipman Tespiti</strong></h1>
+    </header>
+    <!-- İkinci başlık -->
+    <header class="feature-box second">
+        <h1><strong>Output Video</strong></h1>
+    </header>
+
+    <!-- Form alanı Output Video'nun hemen altında sağda -->
+    <div class="form-container">
+        <form method='POST' enctype="multipart/form-data">
+            <!-- Formun içinde kullanılan özel bir etiket için yorum -->
+            {{form.hidden_tag()}}
+            <!-- Dosya girişi -->
+            {{form.file(class_="custom-file-input")}}
+            <!-- Yükle butonu -->
+            <button type="submit" name="favorite" value="x" class="btnCustom">
+                Yükle
+            </button>
+        </form>
+    </div>
+
+    <!-- Çıktı alanı -->
+    <section class="col-sm">
+        <!-- Video görüntüsü için resim etiketi -->
+        <img src="{{ url_for('video') }}" alt="Upload video">
+    </section>
+
+</body>
+
+</html>
